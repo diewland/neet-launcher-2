@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_sort_by_freq"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
+            android:title="Sort by Frequency" />
+        <item
+            android:id="@+id/nav_sort_by_recent"
+            android:icon="@android:drawable/ic_menu_sort_by_size"
+            android:title="Sort by Recent" />
+        <item
+            android:id="@+id/nav_restart"
+            android:icon="@android:drawable/ic_menu_revert"
+            android:title="Restart" />
+    </group>
+
+    <item android:title="Backup / Restore">
+        <menu>
+            <item
+                android:id="@+id/nav_backup"
+                android:icon="@android:drawable/ic_menu_save"
+                android:title="Backup" />
+            <item
+                android:id="@+id/nav_restore"
+                android:icon="@android:drawable/ic_menu_upload"
+                android:title="Restore" />
+        </menu>
+    </item>
+
+</menu>
