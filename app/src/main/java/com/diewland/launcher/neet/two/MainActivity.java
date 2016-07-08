@@ -95,7 +95,8 @@ public class MainActivity extends AppCompatActivity
                  LinearLayout.LayoutParams.MATCH_PARENT, // width
                  LinearLayout.LayoutParams.WRAP_CONTENT  // height
         );
-        lp.setMargins(0, 0, 0, -30);
+        int neet_btm_margin = (int)getResources().getDimension(R.dimen.neet_btn_margin);
+        lp.setMargins(0, 0, 0, neet_btm_margin);
         txt_search = (EditText)findViewById(R.id.txt_search);
         btn_clear = (Button)findViewById(R.id.btn_clear);
 
