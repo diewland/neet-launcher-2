@@ -222,10 +222,16 @@ public class MainActivity extends AppCompatActivity
             btn.setPadding(40, 30, 20, 30);
             btn.setTransformationMethod(null);
 
-            Bitmap bitmap = ((BitmapDrawable) icon_list.get(info.getPackage())).getBitmap();
-            Drawable d = new BitmapDrawable(getResources(), bitmap);
-            d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
-            btn.setCompoundDrawablesWithIntrinsicBounds( null, null, d, null);
+            try {
+                Bitmap bitmap = ((BitmapDrawable) icon_list.get(info.getPackage())).getBitmap();
+                Drawable d = new BitmapDrawable(getResources(), bitmap);
+                d.setBounds(0, 0, d.getMinimumWidth(), d.getMinimumHeight());
+                btn.setCompoundDrawablesWithIntrinsicBounds(null, null, d, null);
+            }
+            catch(Exception e){
+                Log.w(TAG, "Skip uninstall app --> " + info.getPackage());
+                continue;
+            }
             btn.setTag(seq);
 
             // click button
