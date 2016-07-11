@@ -48,8 +48,9 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener {
 
-    private String SORT_TYPE_SCORE = "SCORE";
-    private String SORT_TYPE_TS    = "TS";
+    public static String PACKAGE_NAME;
+    public static String SORT_TYPE_SCORE = "SCORE";
+    public static String SORT_TYPE_TS    = "TS";
 
     private DrawerLayout drawer;
     private TextView bg;
@@ -77,6 +78,9 @@ public class MainActivity extends AppCompatActivity
 
         // hide action bar
         getSupportActionBar().hide();
+
+        // get package name
+        PACKAGE_NAME = getApplicationContext().getPackageName();
 
         NavigationView navigationView = (NavigationView) findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
@@ -172,7 +176,7 @@ public class MainActivity extends AppCompatActivity
             Drawable icon = ri.loadIcon(manager);
 
             // not include this app
-            if(pkg.equals("com.diewland.launcher.neet.two")){
+            if(pkg.equals(PACKAGE_NAME)){
                 continue;
             }
             String json = mPrefs.getString(pkg, "");
