@@ -10,22 +10,18 @@ import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
+import android.support.design.widget.NavigationView;
+import android.support.v4.view.GravityCompat;
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.Toolbar;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.KeyEvent;
-import android.view.View;
-import android.support.design.widget.NavigationView;
-import android.support.v4.view.GravityCompat;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
-import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
@@ -104,8 +100,9 @@ public class MainActivity extends AppCompatActivity
         txt_search = (EditText)findViewById(R.id.txt_search);
         btn_clear = (Button)findViewById(R.id.btn_clear);
 
-        // load data
-        load_data();
+        // manage mPrefs
+        load_data(); // update latest app to app_list
+        save_data(); // save app_list to mPrefs
 
         // draw items
         reload_items();
@@ -134,7 +131,6 @@ public class MainActivity extends AppCompatActivity
 
             @Override
             public void onTextChanged(CharSequence s, int start, int before, int count) {
-                // Log.d(TAG, s.toString());
                 reload_items();
             }
 
@@ -320,14 +316,6 @@ public class MainActivity extends AppCompatActivity
     }
 
     /*** App Events ***/
-
-    @Override
-    protected void onPause() {
-        super.onPause();
-        save_data();
-        load_data();
-        reload_items();
-    }
 
     @Override
     protected void onResume() {
