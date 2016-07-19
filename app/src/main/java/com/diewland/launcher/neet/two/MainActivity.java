@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity
         btn_clear = (Button)findViewById(R.id.btn_clear);
 
         // manage mPrefs
+        Toast.makeText(this, "Loading app list..", Toast.LENGTH_LONG).show();
         load_data(); // update latest app to app_list
         save_data(); // save app_list to mPrefs
 
@@ -112,7 +113,7 @@ public class MainActivity extends AppCompatActivity
             @Override
             public void onClick(View view) {
                 if(ll.getChildCount() == 0) {
-                    Toast.makeText(getApplicationContext(), "Googling...", Toast.LENGTH_SHORT).show();
+                    Toast.makeText(getApplicationContext(), "Googling..", Toast.LENGTH_SHORT).show();
                     String q = txt_search.getText().toString();
                     Uri uri = Uri.parse("https://www.google.co.th/search?q=" + q);
                     Intent intent = new Intent(Intent.ACTION_VIEW, uri);
@@ -349,7 +350,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_restart) {
             finish();
             startActivity(getIntent());
-            Toast.makeText(this, "Refresh done", Toast.LENGTH_LONG).show();
         } else if (id == R.id.nav_backup) {
             try {
                 backup();
