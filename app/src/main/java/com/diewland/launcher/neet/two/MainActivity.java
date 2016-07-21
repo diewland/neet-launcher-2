@@ -319,6 +319,12 @@ public class MainActivity extends AppCompatActivity
     /*** App Events ***/
 
     @Override
+    protected void onPause() {
+        save_data();
+        super.onPause();
+    }
+
+    @Override
     protected void onResume() {
         super.onResume();
         ll.requestFocus(); // prevent auto focus on search bar
