@@ -1,5 +1,6 @@
 package com.diewland.launcher.neet.two;
 
+import android.app.WallpaperManager;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
@@ -99,6 +100,11 @@ public class MainActivity extends AppCompatActivity
         lp.setMargins(0, 0, 0, neet_btm_margin);
         txt_search = (EditText)findViewById(R.id.txt_search);
         btn_clear = (Button)findViewById(R.id.btn_clear);
+
+        // set wallpaper
+        final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
+        final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
+        getWindow().setBackgroundDrawable(wallpaperDrawable);
 
         // manage mPrefs
         Toast.makeText(this, "Loading app list..", Toast.LENGTH_LONG).show();
@@ -222,6 +228,7 @@ public class MainActivity extends AppCompatActivity
             btn.setGravity(Gravity.CENTER_VERTICAL);
             btn.setPadding(40, 30, 20, 30);
             btn.setTransformationMethod(null);
+            btn.getBackground().setAlpha(128); // 256 -> 100% / 128 -> 50 %
 
             try {
                 Bitmap bitmap = ((BitmapDrawable) icon_list.get(info.getPackage())).getBitmap();
