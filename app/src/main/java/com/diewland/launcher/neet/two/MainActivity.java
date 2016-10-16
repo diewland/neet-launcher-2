@@ -25,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -104,7 +105,9 @@ public class MainActivity extends AppCompatActivity
         // set wallpaper
         final WallpaperManager wallpaperManager = WallpaperManager.getInstance(this);
         final Drawable wallpaperDrawable = wallpaperManager.getDrawable();
-        getWindow().setBackgroundDrawable(wallpaperDrawable);
+        //getWindow().setBackgroundDrawable(wallpaperDrawable);
+        ImageView iv = (ImageView)findViewById(R.id.bg2);
+        iv.setImageDrawable(wallpaperDrawable);
 
         // manage mPrefs
         Toast.makeText(this, "Loading app list..", Toast.LENGTH_LONG).show();
